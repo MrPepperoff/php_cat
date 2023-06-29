@@ -7,8 +7,10 @@ body{
 .color{
 	display: flex;
 	justify-content: center;
+
 }
 .color img{
+	cursor: pointer;
 	width: 100px;
 	height: auto;
 	border: 1px solid #000;
@@ -21,4 +23,60 @@ body{
 	padding: 2px;
 	background: #afa;
 	box-shadow: 0 0 10px #0a0;
+}
+.text{
+	display: flex;
+	justify-content: center;
+}
+.text label{
+	text-align: right;
+	font-size: 20px;
+	color: #fff;
+	margin-right: 10px;
+}
+input[type='text']{
+	width: 50%;
+}
+input[type='radio']{
+	display: none;
+}
+
+.obr form{
+	margin: 30px auto;
+}
+.obr h1{
+	text-align: center;
+	color: #fff;
+}
+.obr table{
+	border: 1px solid #000;
+	border-spacing: 0;
+	background: #ddd;
+	width: 50%;
+	margin: 0 auto;
+}
+.obr td{
+	border: 1px solid #000;
+	text-align: center;	
+}
+.obr td:nth-child(1){
+	width: 50px;
+}
+/*.obr td:nth-child(2){
+	min-width: 100px;
+}
+.obr td:nth-child(3){
+	min-width: 100px;
+}*/
+.obr td:nth-child(4){
+	width: 70px;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+	background: #ccc;
+	padding: 0 10px;
+}
+a:hover{
+	background: #999;
 }
