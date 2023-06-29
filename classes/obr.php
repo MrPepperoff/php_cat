@@ -11,14 +11,14 @@
 <?php 
 
 	$link = mysqli_connect("localhost", "new_user", "123", "cats");
-
+	// удаление инфо кота
 	if(isset($_GET['id'])){
 		mysqli_query($link, "DELETE FROM `cats` WHERE id = ".$_GET['id']);
 		header("location: obr.php");
 	}
 
 	
-
+	// добавление кота в список
 	if(isset($_POST['name']) && !empty($_POST['name'])){
 		mysqli_query($link, "INSERT INTO `cats` (name) VALUES ('".$_POST['name']."')");
 	}
