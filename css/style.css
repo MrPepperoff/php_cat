@@ -1,5 +1,5 @@
 body{
-	background: #333;
+	background: #caf0f8;
 }
 .colors{
 
@@ -13,7 +13,8 @@ body{
 	cursor: pointer;
 	width: 100px;
 	height: auto;
-	border: 1px solid #000;
+	border: 1px solid #333;
+	box-shadow: 0 0 10px #333;
 	border-radius: 50%;
 
 }
@@ -25,22 +26,39 @@ body{
 	box-shadow: 0 0 10px #0a0;
 }
 .text{
-	display: flex;
-	justify-content: center;
+	/*display: flex;
+	justify-content: center;*/
+	text-align: center;
 }
 .text label{
-	text-align: right;
 	font-size: 20px;
 	color: #fff;
-	margin-right: 10px;
+/*	margin-right: 10px;*/
 }
 input[type='text']{
 	width: 50%;
+	margin: 0 auto;
 }
 input[type='radio']{
 	display: none;
 }
-
+.index{
+	padding-top: 30px;
+}
+.index form{
+	margin: 30px 0;
+	text-align: center;
+}
+.index button{
+	display: inline-block;
+}
+.index .container_user{
+	max-width: 400px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	margin: 0px auto;
+	background: #606c38;
+}
 .obr form{
 	margin: 30px auto;
 }
@@ -64,19 +82,64 @@ input[type='radio']{
 }
 /*.obr td:nth-child(2){
 	min-width: 100px;
-}
-.obr td:nth-child(3){
-	min-width: 100px;
 }*/
+.obr td:nth-child(3){
+	height: 50px;
+	width: 50px;
+}
 .obr td:nth-child(4){
 	width: 70px;
 }
+.obr img{
+	height: 100%;
+}
 a{
+	display: inline-block;
 	text-decoration: none;
 	color: #fff;
-	background: #ccc;
-	padding: 0 10px;
+	background: #c00;
+	padding:10px;
 }
 a:hover{
-	background: #999;
+	background: #0c0;
+}
+footer{
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+footer img{
+	width: 110%;
+	animation: 5s windy infinite;
+}
+@keyframes windy{
+	0%{
+		transform: skew(-10deg, 0deg);
+		margin-left: 10px;
+	}
+	50%{
+		transform: skew(10deg, 0deg);
+		margin-left: -30px;
+	}
+	100%{
+		transform: skew(-10deg, 0deg);
+		margin-left: 10px;
+	}
+} 
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #132a13;
+    --bs-btn-border-color: #132a13;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #4f772d;
+    --bs-btn-hover-border-color: #31572c;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #31572c;
+    --bs-btn-active-border-color: #4f772d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #132a13;
+    --bs-btn-disabled-border-color: #132a13;
 }

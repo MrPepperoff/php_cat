@@ -10,7 +10,7 @@
 
 <?php 
 
-	$link = mysqli_connect("localhost", "new_user", "123", "db");
+	$link = mysqli_connect("localhost", "new_user", "123", "cats");
 
 	if(isset($_GET['id'])){
 		mysqli_query($link, "DELETE FROM `cats` WHERE id = ".$_GET['id']);
