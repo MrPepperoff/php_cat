@@ -49,8 +49,10 @@
 
 						
 						 while($el = mysqli_fetch_array($data, MYSQLI_ASSOC)){
-						 	
-						 	// echo $el['name']." ".$_POST['name'];
+						 	if (isset($el['name']) && $el['name'] == $_POST['name'] && isset($el['color']) && $el['color'] == $_POST['color']) {
+								echo 'Такой кот уже существует в таблице №'.$el['id'];
+							}
+						 	echo $el['name']." == ".$_POST['name']." ".$el['color']." == ".$_POST['color'];
 
 						 	
 							echo "<tr>";

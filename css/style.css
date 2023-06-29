@@ -111,20 +111,22 @@ footer{
 }
 footer img{
 	width: 110%;
-	animation: 5s windy infinite;
+	margin-left: -5px;
+	transform-origin: 0% 100%;
+	animation: 20s windy infinite;
 }
 @keyframes windy{
 	0%{
 		transform: skew(-10deg, 0deg);
-		margin-left: 10px;
+/*		margin-left: 10px;*/
 	}
 	50%{
 		transform: skew(10deg, 0deg);
-		margin-left: -30px;
+/*		margin-left: -30px;*/
 	}
 	100%{
 		transform: skew(-10deg, 0deg);
-		margin-left: 10px;
+/*		margin-left: 10px;*/
 	}
 } 
 .btn-primary {
