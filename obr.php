@@ -29,8 +29,9 @@
 						// удаление инфо кота
 						if(isset($_GET['id'])){
 							mysqli_query($link, "DELETE FROM `cats_list` WHERE id = ".$_GET['id']);
-							header("location: obr.php");
+							header("location: obr.php?status=delete");
 						}
+
 						
 						$data = mysqli_query($link, "SELECT * FROM `cats_list`");
 						$data_count = mysqli_num_rows($data);
@@ -38,33 +39,48 @@
 						// добавление кота в список
 						
 						if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['color']) && !empty($_POST['color'])){
-
-							$flag = false;
-							$array = [];
+							$flag = true;
 							while($el = mysqli_fetch_array($data, MYSQLI_ASSOC)){
 
 								$name = $_POST['name'];
 								$color = $_POST['color'];
 								
-								if (($el['name'] == $name && $el['color'] == $color)) {
-									$flag = false;
-									echo "V ID = {$el["id"]}  ........ {$el['name']} = {$name}, {$el['color']} = {$color} <br>";
-									$array[]=false;
+								// Проверка наличия кота в базе данных
+								$sql = "SELECT * FROM cats_list WHERE name = '$name' AND color = '$color'";
+								$result = $link->query($sql);
 
+								if ($result->num_rows > 0 && $flag) {
+								    // Кот уже существует, не добавляем его в базу данных
+								    header("location: obr.php?status=error");
+								    $flag = false;
 								}
+								else{
+								    // Кот не существует, добавляем его в базу данных
+								    if($flag){
+								    	$sql = "INSERT INTO cats_list (name, color) VALUES ('$name', '$color')";
 
-								if(($el['name'] != $name || $el['color'] != $color)){
-									if(!in_array(true,$array) && $flag){
-										echo "кот добавлен ........ {$el['name']} = {$name}, {$el['color']} = {$color} <br>";
-										// mysqli_query($link, "INSERT INTO `cats_list`(name, color) VALUES ('".$name."','".$color."')");
-										$flag = false;
-									}
-									else{
-										
-										echo "Х ID = {$el["id"]} ........ {$el['name']} = {$name}, {$el['color']} = {$color} <br>";
-										$array[]=true;
-									}
+								    	$flag = false;
+								    }
+								    
+								    if ($link->query($sql) === TRUE) {
+								        header("location: obr.php?status=success");
+								    } 
+								    
 								}
+							}
+						}
+						if ($_GET['status'] == 'success') {
+							echo "<p class='success'>Кот успешно добавлен</p>";
+
+						}
+						if ($_GET['status'] == 'error') {
+							echo "<p class='error'>Кот уже существует</p>";
+						}
+						if ($_GET['status'] == 'delete') {
+							echo "<p class='delete'>Кот удален успешно</p>";
+						}
+						while($el = mysqli_fetch_array($data, MYSQLI_ASSOC)){
+								
 							echo "<tr>";
 							echo "<td>".$el['id']."</td>";
 							echo "<td>{$el['name']}</td>";
@@ -72,19 +88,7 @@
 							echo "<td><a href='obr.php?id={$el['id']}'>Удалить</a></td>";
 							echo "</tr>";
 
-							}
-							print_r($array);
 						}
-						// while($el = mysqli_fetch_array($data, MYSQLI_ASSOC)){
-								
-						// 	echo "<tr>";
-						// 	echo "<td>".$el['id']."</td>";
-						// 	echo "<td>{$el['name']}</td>";
-						// 	echo "<td><img src='images/{$el['color']}.jpg' alt='{$el['color']}'></td>";
-						// 	echo "<td><a href='obr.php?id={$el['id']}'>Удалить</a></td>";
-						// 	echo "</tr>";
-
-						// }
 						?>
 
 					</table>
@@ -96,9 +100,3 @@
 	<script src='js/script.js'></script>
 </body>
 </html>
-
-
-
-<?php 
-6					
-?>
