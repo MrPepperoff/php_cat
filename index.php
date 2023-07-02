@@ -12,10 +12,10 @@
 	<div class="container_user">
 		<div class="row">
 			<div class="col">
-				<form action="obr.php" method="POST" >
+				<form action="obr.php" method="POST">
 					<div class="mb-5 text">
 
-						<label for="name" class="form-label">Имя </label>
+						<label for="name" class="form-label">Имя</label>
 						<input type="text" class="form-control" id="name" name="name" placeholder="Name">
 					</div>
 					<div class="container mb-5">

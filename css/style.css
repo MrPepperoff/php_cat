@@ -115,6 +115,12 @@ footer img{
 	transform-origin: 0% 100%;
 	animation: 20s windy infinite;
 }
+footer img:nth-child(1){
+	animation: 20s windy infinite;
+}
+footer img:nth-child(2){
+	animation: 20s windy infinite;
+}
 @keyframes windy{
 	0%{
 		transform: skew(-10deg, 0deg);
